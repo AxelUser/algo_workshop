@@ -2,19 +2,19 @@ package bag
 
 // Bag holds collection of elements without ability to remove them.
 type Bag struct {
-	items []int
+	items []interface{}
 	size  int
 }
 
 // NewBag creates empty bag.
 func NewBag() *Bag {
 	return &Bag{
-		items: make([]int, 0),
+		items: make([]interface{}, 0),
 	}
 }
 
 // Add value to bag.
-func (b *Bag) Add(item int) {
+func (b *Bag) Add(item interface{}) {
 	b.items = append(b.items, item)
 	b.size++
 }
@@ -30,8 +30,8 @@ func (b *Bag) Size() int {
 }
 
 // Iter iterates over items in bag.
-func (b *Bag) Iter() <-chan int {
-	ch := make(chan int)
+func (b *Bag) Iter() <-chan interface{} {
+	ch := make(chan interface{})
 	go func() {
 		for _, item := range b.items {
 			ch <- item
