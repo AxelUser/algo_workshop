@@ -1,8 +1,4 @@
-package main
-
-func main() {
-
-}
+package twoSum
 
 func twoSum(nums []int, target int) []int {
 	compliments := make(map[int]int)
